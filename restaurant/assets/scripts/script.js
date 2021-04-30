@@ -8,6 +8,7 @@ $(document).ready(function () {
 
 function runJS() {
   $(".dashboard").hide();
+  updateViews();
 
   $("#login_form").submit(function (e) {
     e.preventDefault();
@@ -35,9 +36,7 @@ function runJS() {
       url: "https://randomuser.me/api/",
       dataType: "json",
       success: function (data) {
-        console.log(data);
-        Users.push(data.results[0].name.first);
-        console.log(data.results[0].name.first);
+        Users.push(data.results[0]);
         updateUsers();
       },
     });
@@ -46,7 +45,8 @@ function runJS() {
   function updateUsers() {
     let text = "";
     for (let i = 0; i < Users.length; i++) {
-      text += Users[i] + " ";
+      let user = Users[i];
+      let name = user.name + user.surname;
     }
     $(".customer").text(text);
   }
