@@ -1,0 +1,25 @@
+.dashboard {
+  background: rgb(39, 39, 39);
+  color: #fff;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  background: rgb(39, 39, 39);
+}
+
+.dashboard header {
+  text-align: center;
+}
+
+.page {
+  background: pink;
+  flex-direction: row;
+  display: flex;
+  border: 1rem;
+  border-color: #000;
+}
+
+.menu2 {
+  border: 1rem;
+}
