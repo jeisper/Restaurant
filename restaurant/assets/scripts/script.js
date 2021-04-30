@@ -120,7 +120,7 @@ function runJS() {
   }
 
   function updateusers() {
-    let text = ;
+    let text = "";
     $(".customer_list").html();
     for (let i = 0; i < users.length; i++) {
       let user = users[i];
