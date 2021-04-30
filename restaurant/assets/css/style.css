@@ -86,8 +86,7 @@ h6 {
 }
 
 h3 {
-  margin: 2rem;
-
+  margin: 1rem 0;
   width: 100%;
 }
 
@@ -120,16 +119,31 @@ h3 {
 .food {
   border: 1rem;
   width: 70%;
+  height: 90vh;
+  overflow: scroll;
   display: flex;
   flex-direction: column;
 }
 .check_box {
-  padding: 3rem;
+  padding: 1rem 2rem;
 }
+
 .check_box label {
   font-size: 1.2rem;
 }
 
+.dashboard label {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin: 0.2rem;
+  display: block;
+}
+
+.dashboard label:hover {
+  background: #eee;
+  cursor: pointer;
+}
 .separator {
   border: 1px solid #777;
   border-radius: 10px;
