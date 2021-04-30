@@ -63,23 +63,90 @@
   color: #fff;
   display: flex;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   flex-direction: column;
   background: rgb(39, 39, 39);
 }
 
-.dashboard header {
+.dashboard h1 {
   text-align: center;
 }
 
+h1,
+h2,
+h4,
+h5,
+h6 {
+  text-align: center;
+  width: 100%;
+  margin: 2rem 0;
+}
+
+h3 {
+  margin: 2rem;
+
+  width: 100%;
+}
+
 .page {
-  background: pink;
-  flex-direction: row;
+  height: 100%;
+  width: 100%;
   display: flex;
+  flex-direction: row;
   border: 1rem;
   border-color: #000;
 }
+.customer {
+  width: 20%;
 
-.menu2 {
+  border: 1px solid white;
+}
+
+.menu {
+  width: 80%;
+  border: 1px solid white;
+  display: flex;
+  flex-direction: row;
+}
+
+.food {
   border: 1rem;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid white;
+}
+.check_box {
+  padding: 3rem;
+  border: 1px solid white;
+}
+.check_box label {
+  font-size: 1.2rem;
+}
+
+.resume {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+
+.bill {
+  height: 80%;
+  display: flex;
+  flex-direction: row;
+}
+
+.price {
+  height: 20%;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid white;
+}
+
+.veg {
+  width: 50%;
+}
+
+.nor {
+  width: 50%;
 }
