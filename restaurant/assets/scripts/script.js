@@ -28,10 +28,18 @@ function runJS() {
   }
 
   function validatePassword(password) {
-    //
+    let strongRegex = new RegExp(
+      "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
+    );
 
-    $(".errorMsg").text(password);
-
-    return false;
+    if (!strongRegex.test(password)) {
+      $(".errorMsg").text(
+        "Password must contain: At least eight characters, One number, One special character, One lower and upper case letter!!"
+      );
+      return false;
+    } else {
+      $(".errorMsg").text("");
+      return true;
+    }
   }
 }
