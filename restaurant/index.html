@@ -1,159 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Restaurant</title>
 
     <link rel="stylesheet" href="assets/css/style.css" />
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="assets/scripts/script.js"></script>
-  </head>
+</head>
 
-  <body>
+<body>
     <section class="login">
-      <div class="form">
-        <h1>Staff Login</h1>
-        <form id="login_form">
-          <label for="uname"><b>Username</b></label>
-          <input
-            type="text"
-            placeholder="Enter Username"
-            name="uname"
-            required
-          />
-          <label for="psw"><b>Password</b></label>
-          <input
-            id="pass"
-            type="password"
-            placeholder="Enter Password"
-            name="psw"
-            required
-          />
-          <button type="submit">Login</button>
-          <div class="errorMsg"></div>
-        </form>
-      </div>
+        <div class="form">
+            <h1>Staff Login</h1>
+            <form id="login_form">
+                <label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" required />
+                <label for="psw"><b>Password</b></label>
+                <input id="pass" type="password" placeholder="Enter Password" name="psw" required />
+                <button type="submit">Login</button>
+                <div class="errorMsg"></div>
+            </form>
+        </div>
     </section>
     <section class="dashboard">
-      <h1>STAFF PAGE</h1>
-      <div class="page">
-        <div class="customer">
-          <h2>CUSTOMERS</h2>
-          <div class="customer_list"></div>
+        <h1>STAFF PAGE</h1>
+        <div class="page">
+            <div class="customer">
+                <h2>CUSTOMERS</h2>
+                <div class="customer_list"></div>
+            </div>
+            <div class="menu">
+                <div class="food">
+                    <h2>MENU</h2>
+                    <div class="check_box">
+                        <h3>STARTERS</h3>
+                        <div class="starters"></div>
+                    </div>
+                    <div class="check_box">
+                        <h3>MAINS</h3>
+                        <div class="mains"></div>
+                    </div>
+                    <div class="check_box">
+                        <h3>DESSERTS</h3>
+                        <div class="desserts"></div>
+                    </div>
+                    <div class="check_box">
+                        <h3>DRINKS</h3>
+                        <div class="drinks"></div>
+                    </div>
+                </div>
+                <div class="separator"></div>
+                <div class="bill">
+                    <div class="summary">
+                        <h2>BILL</h2>
+                    </div>
+                    <div class="price">
+                        <div class="veg">
+                            <h2>VEG</h2>
+                        </div>
+                        <div class="nor">
+                            <h2>NORMAL</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="menu">
-          <div class="food">
-            <h2>MENU</h2>
-            <div class="check_box">
-              <h3>STARTERS</h3>
-              <div class="starters"></div>
-              <label>
-                <input type="checkbox" name="starter1" value="Ceaser_Salada" />
-                <b>Ceaser Salada - 8€</b>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua
-                </p>
-              </label>
-              <input
-                type="checkbox"
-                id="starter"
-                name="starter2"
-                value="Fries"
-              />
-              <label for="starter2">Fries - 4€</label><br />
-              <input
-                type="checkbox"
-                id="starter"
-                name="starter3"
-                value="Chicken_Wings"
-              />
-              <label for="starter3">Chicken Wings - 12€</label><br />
-            </div>
-            <div class="check_box">
-              <h3>MAINS</h3>
-              <div class="mains"></div>
-
-              <input
-                type="checkbox"
-                id="main"
-                name="main1"
-                value="Fish_and_Chips"
-              />
-              <label for="main1">Fish and Chips - 15€</label><br />
-              <input type="checkbox" id="main" name="main2" value="Beef_Stew" />
-              <label for="main2">Beef Stew - 14€</label><br />
-              <input
-                type="checkbox"
-                id="main"
-                name="main3"
-                value="Vegetable_Pie"
-              />
-              <label for="main3">Vegetable Pie - 12€</label><br />
-            </div>
-            <div class="check_box">
-              <h3>DESSERTS</h3>
-              <div class="desserts"></div>
-              <input
-                type="checkbox"
-                id="desert"
-                name="desert1"
-                value="Lemon_Cheesecake"
-              />
-              <label for="desert1">Lemon CheeseCake - 6€</label><br />
-              <input
-                type="checkbox"
-                id="desert"
-                name="desert2"
-                value="Vanilla_Ice_Cream"
-              />
-              <label for="desert2">Vanilla Ice Cream - 5€</label><br />
-              <input
-                type="checkbox"
-                id="desert"
-                name="desert3"
-                value="Chocolate_Brownie"
-              />
-              <label for="desert3">Chocolate Brownie - 7€</label><br />
-            </div>
-            <div class="check_box">
-              <h3>DRINKS</h3>
-              <div class="drinks"></div>
-              <input
-                type="checkbox"
-                id="drink"
-                name="drink1"
-                value="Orange_Juice"
-              />
-              <label for="drink1">Orange Juice - 4€</label><br />
-              <input type="checkbox" id="drink" name="drink2" value="Coke" />
-              <label for="drink2">Coke - 3€</label><br />
-              <input type="checkbox" id="drink" name="drink3" value="Beer" />
-              <label for="drink3">Beer - 5€</label><br />
-            </div>
-          </div>
-          <div class="separator"></div>
-          <div class="bill">
-            <div class="summary">
-              <h2>BILL</h2>
-            </div>
-            <div class="price">
-              <div class="veg">
-                <h2>VEG</h2>
-              </div>
-              <div class="nor">
-                <h2>NORMAL</h2>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
-  </body>
+</body>
+
 </html>
