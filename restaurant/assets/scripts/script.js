@@ -1,6 +1,82 @@
 let isLoggedIn = true;
 
-const Users = [];
+const users = [];
+
+const menu = {
+ starters = [{
+    name = "Ceaser Salada",
+    desc = "Lettuce with parmesan cheese and cesar dressing",
+    veg = true,
+    cost = 8
+  },
+  {
+    name = "Fries",
+    desc = "Portion of chips",
+    veg = true,
+    cost = 4
+  },
+  {
+    name = "Chicken Wings",
+    desc = "Portion of spicy chicken wings with blue cheese sauce",
+    veg = false,
+    cost = 12
+  }
+],
+  mains = [{
+    name = "Fish and Chips",
+    desc = "A fried code followed with chips and tartare sauce",
+    veg = false,
+    cost = 15
+  },
+  {
+    name = "Beef Stew",
+    desc = "Portion of beef stew followed with a portion of mash potatos",
+    veg = false,
+    cost = 14
+  },
+  {
+    name = "Vegetable Pie",
+    desc = "A vegetable pie followed with a potion of mash potato and tomato sauce",
+    veg = true,
+    cost = 12
+  }],
+  deserts = [{
+    name = "Lemon CheeseCake",
+    desc = "A piece of Lemon CheeseCake Topped with Fresh Cream",
+    veg = true,
+    cost = 6
+  },
+  {
+    name = "Vanilla Ice Cream",
+    desc = "3 scoops of Vanilla ice cream with chocolate or caramel topping",
+    veg = true,
+    cost = 5
+  },
+  {
+    name = "Chocolate Brownie",
+    desc = "2 pieces of chocolate brownie followed with a scoop of vanilla ice cream",
+    veg = true,
+    cost = 7
+  }],
+  drinks = [{
+    name = "Orange Juice",
+    desc = "300ml glass of fresh orange juice",
+    veg = true,
+    cost = 4
+  },
+  {
+    name = "Coke",
+    desc = "300ml glass of Coke followed with Ice and lime",
+    veg = true,
+    cost = 3
+  },
+  {
+    name = "Beer",
+    desc = "500ml pint of Beer",
+    veg = true,
+    cost = 5
+  }]
+}
 
 $(document).ready(function () {
   runJS();
@@ -36,18 +112,18 @@ function runJS() {
       url: "https://randomuser.me/api/",
       dataType: "json",
       success: function (data) {
-        Users.push(data.results[0]);
-        updateUsers();
+        users.push(data.results[0]);
+        updateusers();
         console.log(data);
       },
     });
   }
 
-  function updateUsers() {
-    let text = "";
-    $(".customer_list").html("");
-    for (let i = 0; i < Users.length; i++) {
-      let user = Users[i];
+  function updateusers() {
+    let text = ;
+    $(".customer_list").html();
+    for (let i = 0; i < users.length; i++) {
+      let user = users[i];
       let name = user.name.first + " " + user.name.last;
       $(".customer_list").append(` 
       <div class="cust">
@@ -71,7 +147,7 @@ function runJS() {
       );
       return false;
     } else {
-      $(".errorMsg").text("");
+      $(".errorMsg").text();
       return true;
     }
   }
