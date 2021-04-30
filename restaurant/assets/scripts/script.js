@@ -38,17 +38,27 @@ function runJS() {
       success: function (data) {
         Users.push(data.results[0]);
         updateUsers();
+        console.log(data);
       },
     });
   }
 
   function updateUsers() {
     let text = "";
+    $(".customer_list").html("");
     for (let i = 0; i < Users.length; i++) {
       let user = Users[i];
-      let name = user.name + user.surname;
+      let name = user.name.first + " " + user.name.last;
+      $(".customer_list").append(` 
+      <div class="cust">
+        <img
+          src="${user.picture.thumbnail}"
+          alt="Customer picture"
+        />
+        ${name}
+      </div>
+    `);
     }
-    $(".customer").text(text);
   }
   function validatePassword(password) {
     let strongRegex = new RegExp(
