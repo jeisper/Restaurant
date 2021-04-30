@@ -162,3 +162,19 @@ h3 {
 .nor {
   width: 50%;
 }
+
+.cust {
+  display: flex;
+  margin: 0.4rem;
+  padding: 0.5rem;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid rgba(119, 119, 119, 0.308);
+  box-shadow: 1px 1px 5px rgba(119, 119, 119, 0.233);
+}
+
+.cust img {
+  border-radius: 50%;
+  border: 1px solid rgba(119, 119, 119, 0.384);
+  margin-right: 1rem;
+}
