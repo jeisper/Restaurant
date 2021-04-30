@@ -1,4 +1,4 @@
-let isLoggedIn = false;
+let isLoggedIn = true;
 
 $(document).ready(function () {
   runJS();
@@ -6,6 +6,7 @@ $(document).ready(function () {
 
 function runJS() {
   $(".dashboard").hide();
+  updateViews();
 
   $("#login_form").submit(function (e) {
     e.preventDefault();
