@@ -207,3 +207,8 @@ h3 {
   border: 1px solid rgba(119, 119, 119, 0.384);
   margin-right: 1rem;
 }
+
+.customer_list {
+  height: 75vh;
+  overflow: scroll;
+}
