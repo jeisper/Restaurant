@@ -173,15 +173,34 @@ h3 {
 }
 
 .summary {
-  height: 80%;
+  height: 20%;
   display: flex;
   flex-direction: row;
 }
 
 .price {
-  height: 20%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+}
+.price h2 {
+  text-align: left;
+  margin-left: 1rem;
+}
+
+.final {
   display: flex;
   flex-direction: row;
+}
+
+.final h2 {
+  width: 50%;
+}
+
+.final div {
+  width: 50%;
+  border: 1px solid rgba(119, 119, 119, 0.308);
+  margin: 2rem;
 }
 
 .veg {
