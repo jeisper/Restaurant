@@ -1,80 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Restaurant</title>
 
     <link rel="stylesheet" href="assets/css/style.css" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
     <script src="assets/scripts/script.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <section class="login">
-        <div class="form">
-            <h1>Staff Login</h1>
-            <form id="login_form">
-                <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required />
-                <label for="psw"><b>Password</b></label>
-                <input id="pass" type="password" placeholder="Enter Password" name="psw" required />
-                <button type="submit">Login</button>
-                <div class="errorMsg"></div>
-            </form>
-        </div>
+      <div class="form">
+        <h1>Staff Login</h1>
+        <form id="login_form">
+          <label for="uname"><b>Username</b></label>
+          <input
+            type="text"
+            placeholder="Enter Username"
+            name="uname"
+            required
+          />
+          <label for="psw"><b>Password</b></label>
+          <input
+            id="pass"
+            type="password"
+            placeholder="Enter Password"
+            name="psw"
+            required
+          />
+          <button type="submit">Login</button>
+          <div class="errorMsg"></div>
+        </form>
+      </div>
     </section>
     <section class="dashboard">
-        <h1>STAFF PAGE</h1>
-        <nav>
-            <a href="index.html">Home</a> -
-            <a href="page2.html">Page 2</a> -
-        </nav>
-        <div class="page">
-            <div class="customer">
-                <h2>CUSTOMERS</h2>
-                <div class="customer_list"></div>
-            </div>
-            <div class="menu">
-                <div class="food">
-                    <h2>MENU</h2>
-                    <div class="check_box">
-                        <h3>STARTERS</h3>
-                        <div class="starters"></div>
-                    </div>
-                    <div class="check_box">
-                        <h3>MAINS</h3>
-                        <div class="mains"></div>
-                    </div>
-                    <div class="check_box">
-                        <h3>DESSERTS</h3>
-                        <div class="desserts"></div>
-                    </div>
-                    <div class="check_box">
-                        <h3>DRINKS</h3>
-                        <div class="drinks"></div>
-                    </div>
-                </div>
-                <div class="separator"></div>
-                <div class="bill">
-                    <div class="summary">
-                        <h2>BILL</h2>
-                    </div>
-                    <div class="price">
-                        <div class="veg">
-                            <h2>VEG</h2>
-                        </div>
-                        <div class="nor">
-                            <h2>NORMAL</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <h1>STAFF PAGE</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="page2.html">Page 2</a>
+      </nav>
+      <div class="page">
+        <div class="customer">
+          <h2>CUSTOMERS</h2>
+          <div class="customer_list"></div>
         </div>
+        <div class="menu">
+          <div class="food">
+            <h2>MENU</h2>
+            <div class="check_box">
+              <h3>STARTERS</h3>
+              <div class="starters"></div>
+            </div>
+            <div class="check_box">
+              <h3>MAINS</h3>
+              <div class="mains"></div>
+            </div>
+            <div class="check_box">
+              <h3>DESSERTS</h3>
+              <div class="desserts"></div>
+            </div>
+            <div class="check_box">
+              <h3>DRINKS</h3>
+              <div class="drinks"></div>
+            </div>
+          </div>
+          <div class="separator"></div>
+          <div class="bill">
+            <div class="summary">
+              <h2>BILL</h2>
+            </div>
+            <div class="price">
+              <div class="veg">
+                <h2>VEG</h2>
+              </div>
+              <div class="nor">
+                <h2>NORMAL</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
-</body>
-
+  </body>
 </html>

@@ -183,11 +183,10 @@ function runJS() {
     for (let i = 0; i < users.length; i++) {
       let user = users[i];
       let name = user.name.first + " " + user.name.last;
-      let age = ;
-      let gender = ;
-      let country = ;
-      let email = ;
-
+      // let age = ;
+      // let gender = ;
+      // let country = ;
+      // let email = ;
 
       $(".customer_list").append(` 
       <div class="cust">
