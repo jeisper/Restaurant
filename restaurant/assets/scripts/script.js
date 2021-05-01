@@ -26,16 +26,17 @@ const menu = {
   ],
   mains: [
     {
-      name: "Fish and Chips",
-      desc: "A fried code followed with chips and tartare sauce.",
-      veg: false,
-      cost: 15,
-    },
-    {
       name: "Beef Stew",
       desc: "Portion of beef stew followed with a portion of mash potatos.",
       veg: false,
       cost: 14,
+    },
+    {
+      name: "Chicken Curry",
+      desc:
+        "Boiled vetables and a chicken fillet in curry sauce followed with a portion of rice.",
+      veg: false,
+      cost: 15,
     },
     {
       name: "Vegetable Pie",
@@ -47,16 +48,16 @@ const menu = {
   ],
   desserts: [
     {
+      name: "Vanilla IceCream",
+      desc: "3 scoops of Vanilla ice cream with chocolate or caramel topping.",
+      veg: true,
+      cost: 5,
+    },
+    {
       name: "Lemon CheeseCake",
       desc: "A piece of Lemon CheeseCake Topped with Fresh Cream.",
       veg: true,
       cost: 6,
-    },
-    {
-      name: "Vanilla Ice Cream",
-      desc: "3 scoops of Vanilla ice cream with chocolate or caramel topping.",
-      veg: true,
-      cost: 5,
     },
     {
       name: "Chocolate Brownie",
