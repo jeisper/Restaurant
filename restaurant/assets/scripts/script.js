@@ -6,8 +6,8 @@ const bill = {};
 const menu = {
   starters: [
     {
-      name: "Ceaser Salada",
-      desc: "Lettuce with parmesan cheese and cesar dressing.",
+      name: "Ceasar Salad",
+      desc: "Lettuce with parmesan cheese and ceasar dressing.",
       veg: true,
       cost: 8,
     },
