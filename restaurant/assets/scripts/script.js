@@ -128,6 +128,26 @@ function runJS() {
       },
     });
   }
+
+  function createDropdown() {
+    let html = `
+    <select name="quantity">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+    `;
+
+    return html;
+  }
+
   function updateMenu() {
     $(".starters").html("");
     $(".mains").html("");
@@ -141,6 +161,7 @@ function runJS() {
         <p>
           ${menu.starters[i].desc}
         </p>
+        <b style="font-size: 0.9rem">Quantity: <b/> ${createDropdown()}
       </label>
     `);
     }
@@ -152,6 +173,7 @@ function runJS() {
         <p>
           ${menu.mains[i].desc}
         </p>
+        <b style="font-size: 0.9rem">Quantity: <b/> ${createDropdown()}
       </label>
     `);
     }
@@ -163,6 +185,7 @@ function runJS() {
         <p>
           ${menu.desserts[i].desc}
         </p>
+        <b style="font-size: 0.9rem">Quantity: <b/> ${createDropdown()}
       </label>
     `);
     }
@@ -174,6 +197,7 @@ function runJS() {
         <p>
           ${menu.drinks[i].desc}
         </p>
+        <b style="font-size: 0.9rem">Quantity: <b/> ${createDropdown()}
       </label>
     `);
     }
