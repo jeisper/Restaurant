@@ -71,19 +71,16 @@ const menu = {
     {
       name: "Orange Juice",
       desc: "300ml glass of fresh orange juice.",
-      veg: true,
       cost: 4,
     },
     {
       name: "Coke",
       desc: "300ml glass of Coke followed with Ice and lime.",
-      veg: true,
       cost: 3,
     },
     {
       name: "Beer",
       desc: "500ml pint of Beer.",
-      veg: true,
       cost: 5,
     },
   ],
@@ -114,6 +111,7 @@ function runJS() {
       for (let i = 0; i < 5; i++) {
         fatchAPI();
       }
+      calculateBill();
     } else {
       $(".dashboard").hide();
       $(".login").show();
@@ -156,7 +154,7 @@ function runJS() {
 
     bill[id] = bill_item;
 
-    console.log(bill);
+    calculateBill();
   }
 
   function updateMenu() {
@@ -258,7 +256,7 @@ function runJS() {
         if (this.checked) {
           selectItem(
             menu.desserts[i].name.toLowerCase().replace(" ", "_"),
-            "mains",
+            "desserts",
             menu.desserts[i],
             $("#" + menu.desserts[i].name.toLowerCase().replace(" ", "_")).val()
           );
@@ -309,6 +307,46 @@ function runJS() {
       });
     }
   }
+
+  function calculateBill() {
+    let total = 0;
+    let veg = 0;
+    let no_veg = 0;
+    let drink = 0;
+    let start = 0;
+    let main = 0;
+    let dessert = 0;
+    for (const item in bill) {
+      let currItem = bill[item];
+      total += parseInt(currItem.cost) * parseInt(currItem.quantity);
+      if (currItem.veg) {
+        veg += parseInt(currItem.cost) * parseInt(currItem.quantity);
+      }
+      if (!currItem.veg && currItem.veg == undefined) {
+        no_veg += parseInt(currItem.cost) * parseInt(currItem.quantity);
+      }
+      if (currItem.type == "mains") {
+        main += parseInt(currItem.cost) * parseInt(currItem.quantity);
+      }
+      if (currItem.type == "desserts") {
+        dessert += parseInt(currItem.cost) * parseInt(currItem.quantity);
+      }
+      if (currItem.type == "drinks") {
+        drink += parseInt(currItem.cost) * parseInt(currItem.quantity);
+      }
+      if (currItem.type == "starters") {
+        start += parseInt(currItem.cost) * parseInt(currItem.quantity);
+      }
+    }
+    $(".total_total").text("€ " + total);
+    $(".vegetarian_total").text("€ " + veg);
+    $(".non_vegetarian_total").text("€ " + no_veg);
+    $(".dessert_total").text("€ " + dessert);
+    $(".main_total").text("€ " + main);
+    $(".drink_total").text("€ " + drink);
+    $(".start_total").text("€ " + start);
+  }
+
   function updateusers() {
     $(".customer_list").html("");
     for (let i = 0; i < users.length; i++) {
