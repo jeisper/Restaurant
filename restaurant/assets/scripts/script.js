@@ -182,12 +182,12 @@ function runJS() {
     $(".customer_list").html("");
     for (let i = 0; i < users.length; i++) {
       let user = users[i];
-      let name = user.name.first + " " + user.name.last;
-      let age = ;
-      let gender = ;
-      let country = ;
-      let email = ;
-
+      let name = "Name: " + user.name.first + " " + user.name.last + "<br/>";
+      let age = "Age: " + user.dob.age + "<br/>";
+      let gender = "Gender: " + user.gender + "<br/>";
+      let country = "Country: " + user.location.country;
+      let email = "Email: " + user.email + "<br/>";
+      let phone = "Phone Number: " + user.phone + "<br/>";
 
       $(".customer_list").append(` 
       <div class="cust">
@@ -196,6 +196,11 @@ function runJS() {
           alt="Customer picture"
         />
         ${name}
+        ${age}
+        ${phone}
+        ${email}
+        ${gender}
+        ${country}
       </div>
     `);
     }
