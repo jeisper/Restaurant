@@ -2,7 +2,7 @@ let isLoggedIn = true;
 
 const users = [];
 const bill = {};
-const recipes = {
+let recipes = {
   starters: [],
   mains: [],
   desserts: [],
@@ -399,21 +399,96 @@ function runJS() {
   }
 
   function getRecipies() {
-    for (let i = 0; i < menu.starters.length; i++) {
-      fetchFoodAPI(menu.starters[i].name, "starters");
-    }
+    const storedRecipies = JSON.parse(localStorage.getItem("recipes"));
 
-    for (let i = 0; i < menu.mains.length; i++) {
-      fetchFoodAPI(menu.mains[i].name, "mains");
-    }
+    if (storedRecipies && storedRecipies.desserts.length > 2) {
+      recipes = { ...storedRecipies };
+      displayDishes();
+    } else {
+      for (let i = 0; i < menu.starters.length; i++) {
+        fetchFoodAPI(menu.starters[i].name, "starters");
+      }
 
-    for (let i = 0; i < menu.desserts.length; i++) {
-      fetchFoodAPI(menu.desserts[i].name, "desserts");
+      for (let i = 0; i < menu.mains.length; i++) {
+        fetchFoodAPI(menu.mains[i].name, "mains");
+      }
+
+      for (let i = 0; i < menu.desserts.length; i++) {
+        fetchFoodAPI(menu.desserts[i].name, "desserts");
+      }
     }
   }
 
   function displayDishes() {
-    for (let i = 0; i < recipes.starters.length; i++) {}
+    $(".starters_rating").html("");
+    $(".mains_rating").html("");
+    $(".desserts_rating").html("");
+
+    for (let i = 0; i < recipes.starters.length; i++) {
+      let recipe = recipes.starters[i];
+      let healthLabels = recipe.data.recipe.healthLabels;
+
+      let displayedLabels = "<b>Health Labels: </b>";
+
+      for (let j = 0; j < 3; j++) {
+        displayedLabels += "<br/>" + healthLabels[j];
+      }
+
+      $(".starters_rating").append(` 
+      <div class="rating_card">
+          <h2>${recipe.name}</h2>
+          <img src="${recipe.data.recipe.image}" />
+          <p class="calories">${Math.round(
+            recipe.data.recipe.calories
+          )} calories</p>
+          <p class="health_labels">${displayedLabels}</p>
+      </div>
+    `);
+    }
+
+    for (let i = 0; i < recipes.mains.length; i++) {
+      let recipe = recipes.mains[i];
+      let healthLabels = recipe.data.recipe.healthLabels;
+
+      let displayedLabels = "<b>Health Labels: </b>";
+
+      for (let j = 0; j < 3; j++) {
+        displayedLabels += "<br/>" + healthLabels[j];
+      }
+
+      $(".mains_rating").append(` 
+      <div class="rating_card">
+          <h2>${recipe.name}</h2>
+          <img src="${recipe.data.recipe.image}" />
+          <p class="calories">${Math.round(
+            recipe.data.recipe.calories
+          )} calories</p>
+          <p class="health_labels">${displayedLabels}</p>
+      </div>
+    `);
+    }
+
+    for (let i = 0; i < recipes.desserts.length; i++) {
+      let recipe = recipes.desserts[i];
+      let healthLabels = recipe.data.recipe.healthLabels;
+
+      let displayedLabels = "<b>Health Labels: </b>";
+
+      for (let j = 0; j < 3; j++) {
+        displayedLabels += "<br/>" + healthLabels[j];
+      }
+
+      $(".desserts_rating").append(` 
+      <div class="rating_card">
+          <h2>${recipe.name}</h2>
+          <img src="${recipe.data.recipe.image}" />
+          <p class="calories">${Math.round(
+            recipe.data.recipe.calories
+          )} calories</p>
+          <p class="health_labels">${displayedLabels}</p>
+      </div>
+    `);
+    }
   }
 
   function saveToLocalStorage() {
@@ -433,7 +508,7 @@ function runJS() {
         console.log(data);
         let recipe = {
           name: dish,
-          data: data.hits[0],
+          data: data.hits[3],
         };
 
         if (category == "starters") {
@@ -445,7 +520,7 @@ function runJS() {
         }
 
         displayDishes();
-        //saveToLocalStorage();
+        saveToLocalStorage();
       },
     });
   }
