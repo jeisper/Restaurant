@@ -2,6 +2,11 @@ let isLoggedIn = true;
 
 const users = [];
 const bill = {};
+const recipes = {
+  starters: [],
+  mains: [],
+  desserts: [],
+};
 
 const menu = {
   starters: [
@@ -117,6 +122,7 @@ function runJS() {
       $(".login").show();
     }
   }
+
   function fatchAPI() {
     $.ajax({
       url: "https://randomuser.me/api/",
@@ -374,6 +380,7 @@ function runJS() {
     `);
     }
   }
+
   function validatePassword(password) {
     let strongRegex = new RegExp(
       "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
@@ -388,5 +395,57 @@ function runJS() {
       $(".errorMsg").text();
       return true;
     }
+  }
+
+  function getRecipies() {
+    for (let i = 0; i < menu.starters.length; i++) {
+      fetchFoodAPI(menu.starters[i].name);
+    }
+
+    for (let i = 0; i < menu.mains.length; i++) {
+      fetchFoodAPI(menu.mains[i].name);
+    }
+
+    for (let i = 0; i < menu.desserts.length; i++) {
+      fetchFoodAPI(menu.desserts[i].name);
+    }
+  }
+
+  function displayDishes() {
+    for (let i = 0; i < recipes.starters.length; i++) {}
+  }
+
+  function saveToLocalStorage() {
+    localStorage.setItem("recipes", JSON.stringify(recipes));
+  }
+
+  function fetchFoodAPI(dish, category) {
+    const YOUR_APP_ID = "c20a1288";
+    const YOUR_APP_KEY = "1390ea56fadf5b5e0dd47542f3f3273b";
+    const search = dish.replace(" ", "%20");
+    let url = `https://api.edamam.com/search?q=${search}&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}`;
+
+    $.ajax({
+      url,
+      dataType: "json",
+      success: function (data) {
+        console.log(data);
+        let recipe = {
+          name: dish,
+          data: data,
+        };
+
+        if (category == "starters") {
+          recipes.starters.push(recipe);
+        } else if (category == "mains") {
+          recipes.mains.push(recipe);
+        } else if (category == "desserts") {
+          recipes.desserts.push(recipe);
+        }
+
+        displayDishes();
+        saveToLocalStorage();
+      },
+    });
   }
 }
