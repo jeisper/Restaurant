@@ -249,6 +249,7 @@ h3 {
 
 .rating_card img {
   border-radius: 50%;
+  height: 12rem;
 }
 
 .rating_card {
@@ -275,4 +276,10 @@ h3 {
   display: flex;
   flex-direction: row;
   border: 1rem;
+}
+
+.health_labels,
+.calories {
+  text-align: center;
+  margin: 1rem 0;
 }
