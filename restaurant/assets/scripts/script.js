@@ -1,5 +1,5 @@
+// Initializing variables
 let isLoggedIn = true;
-
 const users = [];
 const bill = {};
 let recipes = {
@@ -7,7 +7,6 @@ let recipes = {
   mains: [],
   desserts: [],
 };
-
 const menu = {
   starters: [
     {
@@ -91,40 +90,49 @@ const menu = {
   ],
 };
 
+// jQuery setup
 $(document).ready(function () {
   runJS();
 });
 
+// JS Code after winodw is loaded
 function runJS() {
-  $(".dashboard").hide();
-  updateViews();
-  updateMenu();
-  getRecipies();
+  $(".dashboard").hide(); // hide staff page if not logged in
+  updateViews(); // load password page
+  updateMenu(); // load menu
+  getRecipies(); // load dishes for page 2
 
+  // handle login
   $("#login_form").submit(function (e) {
     e.preventDefault();
 
+    // validate password and open staff page
     if (validatePassword($("#pass").val())) {
       isLoggedIn = true;
     }
     updateViews();
   });
 
+  // show staff page or login page
   function updateViews() {
     if (isLoggedIn) {
-      $(".dashboard").show();
-      $(".login").hide();
+      $(".dashboard").show(); // show staff page
+      $(".login").hide(); // hide login page
+
+      // get 5 customers from API
       for (let i = 0; i < 5; i++) {
-        fatchAPI();
+        fetchAPI();
       }
-      calculateBill();
+
+      calculateBill(); // create initial bill
     } else {
       $(".dashboard").hide();
       $(".login").show();
     }
   }
 
-  function fatchAPI() {
+  // call the random user API and store it in users object
+  function fetchAPI() {
     $.ajax({
       url: "https://randomuser.me/api/",
       dataType: "json",
@@ -135,6 +143,7 @@ function runJS() {
     });
   }
 
+  // create html for Quantity dropdown
   function createDropdown(id) {
     let html = `
     <select name="quantity" id="${id}">
@@ -150,10 +159,10 @@ function runJS() {
       <option value="10">10</option>
     </select>
     `;
-
     return html;
   }
 
+  // update bill when a menu item is selected
   function selectItem(id, itemType, item, quantity) {
     const bill_item = { ...item };
     bill_item.type = itemType;
@@ -164,11 +173,15 @@ function runJS() {
     calculateBill();
   }
 
+  // display menu in html from data in object
   function updateMenu() {
+    // reset html
     $(".starters").html("");
     $(".mains").html("");
     $(".desserts").html("");
     $(".drinks").html("");
+
+    // display starters menu items
     for (let i = 0; i < menu.starters.length; i++) {
       $(".starters").append(` 
       <label>
@@ -205,6 +218,8 @@ function runJS() {
         }
       });
     }
+
+    // display mains menu items
     for (let i = 0; i < menu.mains.length; i++) {
       $(".mains").append(` 
       <label>
@@ -241,6 +256,8 @@ function runJS() {
         }
       });
     }
+
+    // display desserts menu items
     for (let i = 0; i < menu.desserts.length; i++) {
       $(".desserts").append(` 
       <label>
@@ -277,6 +294,8 @@ function runJS() {
         }
       });
     }
+
+    // display drinks menu items
     for (let i = 0; i < menu.drinks.length; i++) {
       $(".drinks").append(` 
       <label>
@@ -315,7 +334,9 @@ function runJS() {
     }
   }
 
+  // calculate and display bill
   function calculateBill() {
+    // initialize bill variables
     let total = 0;
     let veg = 0;
     let no_veg = 0;
@@ -323,6 +344,8 @@ function runJS() {
     let start = 0;
     let main = 0;
     let dessert = 0;
+
+    // calculate all bill items
     for (const item in bill) {
       let currItem = bill[item];
       total += parseInt(currItem.cost) * parseInt(currItem.quantity);
@@ -345,6 +368,8 @@ function runJS() {
         start += parseInt(currItem.cost) * parseInt(currItem.quantity);
       }
     }
+
+    // display all bill item values
     $(".total_total").text("€ " + total);
     $(".vegetarian_total").text("€ " + veg);
     $(".non_vegetarian_total").text("€ " + no_veg);
@@ -354,8 +379,11 @@ function runJS() {
     $(".start_total").text("€ " + start);
   }
 
+  // display random customer list
   function updateusers() {
     $(".customer_list").html("");
+
+    // loop over customers from API and display them
     for (let i = 0; i < users.length; i++) {
       let user = users[i];
       let name = "Name: " + user.name.first + " " + user.name.last + "<br/>";
@@ -382,6 +410,7 @@ function runJS() {
     }
   }
 
+  // check if password meets requirements
   function validatePassword(password) {
     let strongRegex = new RegExp(
       "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
@@ -398,9 +427,11 @@ function runJS() {
     }
   }
 
+  // get recipies from local storage or fetch API if not stored
   function getRecipies() {
     const storedRecipies = JSON.parse(localStorage.getItem("recipes"));
 
+    // if dishes not stored in local storage fetch food API otherwise display
     if (storedRecipies && storedRecipies.desserts.length > 2) {
       recipes = { ...storedRecipies };
       displayDishes();
@@ -419,11 +450,13 @@ function runJS() {
     }
   }
 
+  // display dishes from Food API
   function displayDishes() {
     $(".starters_rating").html("");
     $(".mains_rating").html("");
     $(".desserts_rating").html("");
 
+    // display starters
     for (let i = 0; i < recipes.starters.length; i++) {
       let recipe = recipes.starters[i];
       let healthLabels = recipe.data.recipe.healthLabels;
@@ -446,6 +479,7 @@ function runJS() {
     `);
     }
 
+    // display mains
     for (let i = 0; i < recipes.mains.length; i++) {
       let recipe = recipes.mains[i];
       let healthLabels = recipe.data.recipe.healthLabels;
@@ -468,6 +502,7 @@ function runJS() {
     `);
     }
 
+    // display desserts
     for (let i = 0; i < recipes.desserts.length; i++) {
       let recipe = recipes.desserts[i];
       let healthLabels = recipe.data.recipe.healthLabels;
@@ -491,10 +526,12 @@ function runJS() {
     }
   }
 
+  // save recipes to web local storage to cache API results
   function saveToLocalStorage() {
     localStorage.setItem("recipes", JSON.stringify(recipes));
   }
 
+  // Call the food API and stored results in recipes object and cache in local storage
   function fetchFoodAPI(dish, category) {
     const YOUR_APP_ID = "c20a1288";
     const YOUR_APP_KEY = "1390ea56fadf5b5e0dd47542f3f3273b";
