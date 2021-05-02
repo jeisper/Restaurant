@@ -99,6 +99,7 @@ function runJS() {
   $(".dashboard").hide();
   updateViews();
   updateMenu();
+  getRecipies();
 
   $("#login_form").submit(function (e) {
     e.preventDefault();
@@ -399,15 +400,15 @@ function runJS() {
 
   function getRecipies() {
     for (let i = 0; i < menu.starters.length; i++) {
-      fetchFoodAPI(menu.starters[i].name);
+      fetchFoodAPI(menu.starters[i].name, "starters");
     }
 
     for (let i = 0; i < menu.mains.length; i++) {
-      fetchFoodAPI(menu.mains[i].name);
+      fetchFoodAPI(menu.mains[i].name, "mains");
     }
 
     for (let i = 0; i < menu.desserts.length; i++) {
-      fetchFoodAPI(menu.desserts[i].name);
+      fetchFoodAPI(menu.desserts[i].name, "desserts");
     }
   }
 
@@ -432,7 +433,7 @@ function runJS() {
         console.log(data);
         let recipe = {
           name: dish,
-          data: data,
+          data: data.hits[0],
         };
 
         if (category == "starters") {
@@ -444,7 +445,7 @@ function runJS() {
         }
 
         displayDishes();
-        saveToLocalStorage();
+        //saveToLocalStorage();
       },
     });
   }
