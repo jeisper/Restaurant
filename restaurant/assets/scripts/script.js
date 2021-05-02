@@ -1,5 +1,5 @@
 // Initializing variables
-let isLoggedIn = true;
+let isLoggedIn = false;
 const users = [];
 const bill = {};
 let recipes = {
@@ -7,6 +7,7 @@ let recipes = {
   mains: [],
   desserts: [],
 };
+
 const menu = {
   starters: [
     {
@@ -31,14 +32,13 @@ const menu = {
   mains: [
     {
       name: "Beef Stew",
-      desc: "Portion of beef stew followed with a portion of mash potatos.",
+      desc: "Portion of beef stew followed with a portion of rice.",
       veg: false,
       cost: 14,
     },
     {
-      name: "Chicken Curry",
-      desc:
-        "Boiled vetables and a chicken fillet in curry sauce followed with a portion of rice.",
+      name: "Coddle",
+      desc: "Boiled potato, bacon and sausage.",
       veg: false,
       cost: 15,
     },
@@ -54,20 +54,17 @@ const menu = {
     {
       name: "Vanilla IceCream",
       desc: "3 scoops of Vanilla ice cream with chocolate or caramel topping.",
-      veg: true,
       cost: 5,
     },
     {
       name: "Lemon CheeseCake",
       desc: "A piece of Lemon CheeseCake Topped with Fresh Cream.",
-      veg: true,
       cost: 6,
     },
     {
       name: "Chocolate Brownie",
       desc:
         "2 pieces of chocolate brownie followed with a scoop of vanilla ice cream.",
-      veg: true,
       cost: 7,
     },
   ],
@@ -93,6 +90,12 @@ const menu = {
 // jQuery setup
 $(document).ready(function () {
   runJS();
+  var path = window.location.pathname;
+  var page = path.split("/").pop();
+  if (page == "page2.html") {
+    isLoggedIn = true;
+    runJS();
+  }
 });
 
 // JS Code after winodw is loaded
