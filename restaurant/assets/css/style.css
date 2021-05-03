@@ -283,3 +283,13 @@ h3 {
   text-align: center;
   margin: 1rem 0;
 }
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: rgb(39, 39, 39);
+  color: white;
+}
+footer p {
+  margin: 1rem;
+}
